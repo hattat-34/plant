@@ -1,5 +1,6 @@
 import Home from './Home';
-import Onboard from './Onboard';
-import Paywall from './Paywall';
+import GettingStarted from './Onboard';
+import Onboard from './Onboard/Onboard';
+import Paywall from './Onboard/Paywall';
 
-export {Onboard, Paywall, Home};
+export {GettingStarted, Onboard, Paywall, Home};
