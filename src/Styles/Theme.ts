@@ -6,6 +6,7 @@ const Light = {
   colors: {
     ...DefaultTheme.colors,
     background: COLORS.WHITE,
+    text: COLORS.BLACK,
   },
 };
 
