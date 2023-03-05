@@ -1,7 +1,10 @@
 import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
-import {Onboard, Paywall} from '../Screens';
-import HomeNavigator from './HomeStackNavigator';
+import {
+  CardStyleInterpolators,
+  createStackNavigator,
+} from '@react-navigation/stack';
+import {GettingStarted, Onboard, Paywall} from '../Screens';
+import TabNavigator from './TabNavigator';
 
 declare global {
   namespace ReactNavigation {
@@ -10,6 +13,7 @@ declare global {
 }
 
 type RootStackParamList = {
+  GettingStarted: undefined;
   Onboard: undefined;
   Paywall: undefined;
   Home: undefined;
@@ -19,9 +23,18 @@ const MainStack = createStackNavigator<RootStackParamList>();
 
 const RootNavigator = () => (
   <MainStack.Navigator screenOptions={{headerShown: false}}>
+    <MainStack.Screen name="GettingStarted" component={GettingStarted} />
     <MainStack.Screen name="Onboard" component={Onboard} />
-    <MainStack.Screen name="Paywall" component={Paywall} />
-    <MainStack.Screen name="Home" component={HomeNavigator} />
+    <MainStack.Screen
+      name="Paywall"
+      component={Paywall}
+      options={{
+        presentation: 'modal',
+        gestureEnabled: false,
+        cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,
+      }}
+    />
+    <MainStack.Screen name="Home" component={TabNavigator} />
   </MainStack.Navigator>
 );
 
