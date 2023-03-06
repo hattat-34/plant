@@ -17,7 +17,7 @@ type RootStackParamList = {
   GettingStarted: undefined;
   Onboard: undefined;
   Paywall: undefined;
-  Home: undefined;
+  BottomTab: undefined;
 };
 
 const MainStack = createStackNavigator<RootStackParamList>();
@@ -28,7 +28,7 @@ const RootNavigator = () => {
   if (user.onboarded) {
     return (
       <MainStack.Navigator screenOptions={{headerShown: false}}>
-        <MainStack.Screen name="Home" component={TabNavigator} />
+        <MainStack.Screen name="BottomTab" component={TabNavigator} />
       </MainStack.Navigator>
     );
   }
@@ -46,7 +46,7 @@ const RootNavigator = () => {
           cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,
         }}
       />
-      <MainStack.Screen name="Home" component={TabNavigator} />
+      <MainStack.Screen name="BottomTab" component={TabNavigator} />
     </MainStack.Navigator>
   );
 };

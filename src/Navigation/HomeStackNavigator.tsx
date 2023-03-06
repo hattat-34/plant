@@ -9,7 +9,7 @@ declare global {
 }
 
 type HomeStackParamList = {
-  Home: undefined;
+  HomeStack: undefined;
 };
 
 const HomeStack = createStackNavigator<HomeStackParamList>();
@@ -18,7 +18,7 @@ const HomeNavigator = () => (
   <HomeStack.Navigator>
     <HomeStack.Screen
       options={{headerShown: false}}
-      name="Home"
+      name="HomeStack"
       component={Home}
     />
   </HomeStack.Navigator>

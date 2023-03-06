@@ -1,6 +1,7 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HomeNavigator from './HomeStackNavigator';
+import BottomTabBar from '../Components/BottomTabBar';
 import {Diagnose, MyGarden, Profile, Scan} from '../Screens';
 declare global {
   namespace ReactNavigation {
@@ -9,26 +10,26 @@ declare global {
 }
 
 export type TabParamList = {
-  Tab_Home: undefined;
-  Tab_Diagnose: undefined;
-  Tab_Scan: undefined;
-  Tab_MyGarden: undefined;
-  Tab_Profile: undefined;
+  Home: undefined;
+  Diagnose: undefined;
+  Scan: undefined;
+  MyGarden: undefined;
+  Profile: undefined;
 };
 
 const Tab = createBottomTabNavigator<TabParamList>();
 
 const TabNavigator = () => (
-  <Tab.Navigator>
+  <Tab.Navigator tabBar={props => <BottomTabBar {...props} />}>
     <Tab.Screen
-      name="Tab_Home"
+      name="Home"
       component={HomeNavigator}
       options={{headerShown: false}}
     />
-    <Tab.Screen name="Tab_Diagnose" component={Diagnose} />
-    <Tab.Screen name="Tab_Scan" component={Scan} />
-    <Tab.Screen name="Tab_MyGarden" component={MyGarden} />
-    <Tab.Screen name="Tab_Profile" component={Profile} />
+    <Tab.Screen name="Diagnose" component={Diagnose} />
+    <Tab.Screen name="Scan" component={Scan} />
+    <Tab.Screen name="MyGarden" component={MyGarden} />
+    <Tab.Screen name="Profile" component={Profile} />
   </Tab.Navigator>
 );
 

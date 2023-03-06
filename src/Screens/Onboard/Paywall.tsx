@@ -43,7 +43,7 @@ const Paywall = () => {
   const onClose = () => {
     dispatch(setOnboard());
     navigation.reset({
-      routes: [{name: 'Home'}],
+      routes: [{name: 'BottomTab'}],
     });
   };
 
