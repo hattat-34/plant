@@ -13,6 +13,7 @@ import com.facebook.soloader.SoLoader;
 import com.plant.newarchitecture.MainApplicationReactNativeHost;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
+import org.wonday.orientation.OrientationActivityLifecycle;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -53,6 +54,8 @@ public class MainApplication extends Application implements ReactApplication {
   @Override
   public void onCreate() {
     super.onCreate();
+    // react native orientation locker configuration
+    registerActivityLifecycleCallbacks(OrientationActivityLifecycle.getInstance());
     // Custom fonts
     ReactFontManager.getInstance().addCustomFont(this, "Rubik", R.font.rubik);
     ReactFontManager.getInstance().addCustomFont(this, "SF Pro Text", R.font.sfprotext);
