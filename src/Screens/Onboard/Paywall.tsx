@@ -21,12 +21,15 @@ import {COLORS, Containers, Texts} from '../../Styles';
 import {fontPixel, heightPixel, widthPixel} from '../../Utils/Scale';
 import {SvgProps} from 'react-native-svg';
 import {useNavigation} from '@react-navigation/native';
+import {useAppDispatch} from '../../Utils/Hooks';
+import {setOnboard} from '../../Store/Entities/User';
 
 type PremiumOptions = 'monthly' | 'annual';
 
 const Paywall = () => {
   const [premium, setPremium] = useState<PremiumOptions>();
   const navigation = useNavigation();
+  const dispatch = useAppDispatch();
 
   const renderCard = ({item}: {item: PaywallCardData}) => (
     <PaywallCard
@@ -37,6 +40,13 @@ const Paywall = () => {
     />
   );
 
+  const onClose = () => {
+    dispatch(setOnboard());
+    navigation.reset({
+      routes: [{name: 'Home'}],
+    });
+  };
+
   return (
     <ImageBackground
       style={styles.background}
@@ -45,13 +55,7 @@ const Paywall = () => {
       resizeMode="contain">
       <SafeView>
         <View style={Containers.rootContainer}>
-          <TouchableOpacity
-            style={styles.closeBtn}
-            onPress={() =>
-              navigation.reset({
-                routes: [{name: 'Home'}],
-              })
-            }>
+          <TouchableOpacity style={styles.closeBtn} onPress={onClose}>
             <Close width={widthPixel(24)} height={heightPixel(24)} />
           </TouchableOpacity>
           <PlantText style={[Texts.titleBold, styles.title]}>
