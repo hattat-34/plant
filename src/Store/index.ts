@@ -1,4 +1,5 @@
 import {configureStore} from '@reduxjs/toolkit';
+import {persistStore} from 'redux-persist';
 import apiMiddleware from './Middlewares/Api';
 import rootReducer from './Reducers';
 
@@ -12,12 +13,14 @@ if (__DEV__) {
 const store = configureStore({
   reducer: rootReducer,
   middleware: getDefaultMiddleware =>
-    getDefaultMiddleware().concat(...middlewares),
+    getDefaultMiddleware({serializableCheck: false}).concat(...middlewares),
 });
 
+const persistedStore = persistStore(store);
+
 export default store;
+export {persistedStore};
 
 declare global {
   type AppDispatch = typeof store.dispatch;
-  type RootState = ReturnType<typeof rootReducer>;
 }
