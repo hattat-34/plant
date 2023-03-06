@@ -5,7 +5,7 @@ export default StyleSheet.create({
   title: {
     marginBottom: heightPixel(8),
     fontSize: fontPixel(28),
-    width: widthPixel(320),
+    width: widthPixel(330),
   },
   titleBold: {
     fontSize: fontPixel(28),

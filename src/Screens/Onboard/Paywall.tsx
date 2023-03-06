@@ -38,11 +38,11 @@ const Paywall = () => {
   );
 
   return (
-    <View style={styles.container}>
-      <ImageBackground
-        style={styles.background}
-        source={require('../../Assets/Image/Paywall-bg.png')}
-      />
+    <ImageBackground
+      style={styles.background}
+      imageStyle={{top: -heightPixel(60)}}
+      source={require('../../Assets/Image/Paywall-bg.png')}
+      resizeMode="contain">
       <SafeView>
         <View style={Containers.rootContainer}>
           <TouchableOpacity
@@ -83,17 +83,19 @@ const Paywall = () => {
             discount={50}
           />
           <PlantButton style={styles.tryBtn} title="Try free for 3 days" />
-          <PlantText style={styles.premiumInfoLabel}>
-            After the 3-day free trial period you’ll be charged ₺274.99 per year
-            unless you cancel before the trial expires. Yearly Subscription is
-            Auto-Renewable
-          </PlantText>
-          <PlantText style={styles.termsLabel}>
-            Terms • Privacy • Restore
-          </PlantText>
+          <View style={styles.labelContainer}>
+            <PlantText style={styles.premiumInfoLabel}>
+              After the 3-day free trial period you’ll be charged ₺274.99 per
+              year unless you cancel before the trial expires. Yearly
+              Subscription is Auto-Renewable
+            </PlantText>
+            <PlantText style={styles.termsLabel}>
+              Terms • Privacy • Restore
+            </PlantText>
+          </View>
         </View>
       </SafeView>
-    </View>
+    </ImageBackground>
   );
 };
 
@@ -101,12 +103,8 @@ export default Paywall;
 
 const styles = StyleSheet.create({
   background: {
-    position: 'absolute',
-    width: widthPixel(378),
-    height: heightPixel(571),
-  },
-  container: {
     flex: 1,
+    height: heightPixel(550),
     backgroundColor: 'rgba(16, 30, 23, 1)',
   },
   title: {
@@ -135,25 +133,30 @@ const styles = StyleSheet.create({
     marginBottom: heightPixel(16),
   },
   tryBtn: {
-    marginTop: heightPixel(10),
+    marginTop: heightPixel(5),
+  },
+  labelContainer: {
+    flex: 1,
+    justifyContent: 'flex-end',
   },
   premiumInfoLabel: {
-    fontSize: fontPixel(9),
+    fontSize: heightPixel(9),
     fontWeight: '300',
     color: 'rgba(255, 255, 255, 0.52)',
     textAlign: 'center',
-    marginVertical: heightPixel(5),
+    marginBottom: heightPixel(5),
   },
   termsLabel: {
-    fontSize: fontPixel(11),
+    fontSize: heightPixel(11),
     fontWeight: '400',
     color: 'rgba(255, 255, 255, 0.52)',
     textAlign: 'center',
   },
   closeBtn: {
     position: 'absolute',
-    right: widthPixel(12),
     padding: 4,
+    right: widthPixel(12),
+    top: heightPixel(3),
   },
 });
 

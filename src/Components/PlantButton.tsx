@@ -6,7 +6,7 @@ import {
   TouchableOpacityProps,
 } from 'react-native';
 import {COLORS} from '../Styles';
-import {fontPixel, heightPixel} from '../Utils/Scale';
+import {heightPixel, widthPixel} from '../Utils/Scale';
 
 interface Props extends TouchableOpacityProps {
   title?: string;
@@ -29,11 +29,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: COLORS.APP_GREEN,
-    borderRadius: 12,
+    borderRadius: widthPixel(12),
   },
   text: {
     fontFamily: 'SF Pro Text',
-    fontSize: fontPixel(15),
+    fontSize: heightPixel(15),
     fontWeight: '700',
     color: COLORS.WHITE,
   },

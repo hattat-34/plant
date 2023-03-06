@@ -39,13 +39,13 @@ const styles = StyleSheet.create({
     borderRadius: 14,
   },
   title: {
-    fontSize: fontPixel(20),
+    fontSize: heightPixel(20),
     fontWeight: '500',
     color: COLORS.WHITE,
     marginBottom: heightPixel(5),
   },
   label: {
-    fontSize: fontPixel(13),
+    fontSize: heightPixel(13),
     color: 'rgba(255, 255, 255, 0.7)',
   },
   icon: {

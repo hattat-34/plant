@@ -22,6 +22,7 @@ const GettingStarted = () => {
           <Image
             source={require('../../Assets/Image/Onboard-1.png')}
             style={styles.imgContent}
+            resizeMode='contain'
           />
           <PlantButton
             title="Get Started"
@@ -55,7 +56,7 @@ const styles = StyleSheet.create({
   },
   imgContent: {
     width: widthPixel(323),
-    height: heightPixel(490),
-    marginVertical: heightPixel(12),
+    height: heightPixel(499),
+    marginTop: heightPixel(12),
   },
 });
