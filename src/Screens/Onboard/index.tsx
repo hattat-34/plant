@@ -1,11 +1,17 @@
 import {useNavigation} from '@react-navigation/native';
+import {useEffect} from 'react';
 import {Image, ImageBackground, StyleSheet, View} from 'react-native';
 import {PlantButton, PlantText, SafeView} from '../../Components';
 import {COLORS, Containers, Texts} from '../../Styles';
 import {fontPixel, heightPixel, widthPixel} from '../../Utils/Scale';
+import Orientation from 'react-native-orientation-locker';
 
 const GettingStarted = () => {
   const navigation = useNavigation();
+
+  useEffect(() => {
+    Orientation.lockToPortrait();
+  }, []);
 
   return (
     <ImageBackground
@@ -22,7 +28,7 @@ const GettingStarted = () => {
           <Image
             source={require('../../Assets/Image/Onboard-1.png')}
             style={styles.imgContent}
-            resizeMode='contain'
+            resizeMode="contain"
           />
           <PlantButton
             title="Get Started"
