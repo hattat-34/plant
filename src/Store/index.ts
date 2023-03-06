@@ -1,7 +1,8 @@
 import {configureStore} from '@reduxjs/toolkit';
+import apiMiddleware from './Middlewares/Api';
 import rootReducer from './Reducers';
 
-const middlewares = [];
+const middlewares = [apiMiddleware];
 
 if (__DEV__) {
   const createDebugger = require('redux-flipper').default;
