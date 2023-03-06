@@ -13,7 +13,6 @@ interface Payload {
   onStart?: string;
   onSuccess?: string;
   onError?: string;
-  onFinish?: string;
 }
 
 const client = axios.create({

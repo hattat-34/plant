@@ -12,7 +12,7 @@ if (__DEV__) {
 const store = configureStore({
   reducer: rootReducer,
   middleware: getDefaultMiddleware =>
-    getDefaultMiddleware({serializableCheck: false}).concat(...middlewares),
+    getDefaultMiddleware().concat(...middlewares),
 });
 
 export default store;

@@ -1,4 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
+import {QuestionResponse} from '../../Services/Public/QuestionService';
 
 interface PlantQuestion {
   id: number;
@@ -26,8 +27,20 @@ const plantQuestion = createSlice({
     plantQuestionRequested: question => {
       question.loading = true;
     },
-    plantQuestionReceived: (question, action) => {
-      question.list = action.payload; // TO DO
+    plantQuestionReceived: (
+      question,
+      {payload}: {payload: QuestionResponse},
+    ) => {
+      question.list = payload
+        .map(response => ({
+          id: response.id,
+          order: response.order,
+          title: response.title,
+          subTitle: response.subtitle,
+          imageUri: response.image_uri,
+          uri: response.uri,
+        }))
+        .sort((q1, q2) => q1.order - q2.order);
       question.loading = false;
     },
     plantQuestionFailed: question => {
@@ -42,3 +55,4 @@ export const {
   plantQuestionReceived,
   plantQuestionFailed,
 } = plantQuestion.actions;
+export type {PlantQuestion};

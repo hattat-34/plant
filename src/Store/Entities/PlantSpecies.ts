@@ -1,4 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
+import {CategoryResponse} from '../../Services/Public/CategoryService';
 
 interface PlantSpecies {
   id: number;
@@ -25,8 +26,16 @@ const plantSpecies = createSlice({
     plantSpeciesRequested: species => {
       species.loading = true;
     },
-    plantSpeciesReceived: (species, action) => {
-      species.list = action.payload; // TO DO
+    plantSpeciesReceived: (species, {payload}: {payload: CategoryResponse}) => {
+      species.list = payload.data
+        .map(response => ({
+          id: response.id,
+          name: response.name,
+          title: response.title,
+          rank: response.rank,
+          imageUrl: response.image.url,
+        }))
+        .sort((s1, s2) => s1.rank - s2.rank);
       species.loading = false;
     },
     plantSpeciesFailed: species => {
@@ -38,3 +47,4 @@ const plantSpecies = createSlice({
 export default plantSpecies.reducer;
 export const {plantSpeciesRequested, plantSpeciesReceived, plantSpeciesFailed} =
   plantSpecies.actions;
+export type {PlantSpecies};
