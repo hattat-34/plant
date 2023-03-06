@@ -60,7 +60,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: 'rgba(255, 255, 255, 0.05)',
-    width: widthPixel(327),
     height: heightPixel(60),
     borderRadius: 14,
     padding: 16,
@@ -70,12 +69,12 @@ const styles = StyleSheet.create({
     marginLeft: widthPixel(12),
   },
   title: {
-    fontSize: widthPixel(16),
+    fontSize: heightPixel(16),
     fontWeight: '500',
     color: COLORS.WHITE,
   },
   subTitle: {
-    fontSize: widthPixel(12),
+    fontSize: heightPixel(12),
     fontWeight: '400',
     color: 'rgba(255, 255, 255, 0.7)',
   },

@@ -8,7 +8,7 @@ import {
   View,
 } from 'react-native';
 import {COLORS} from '../Styles';
-import {heightPixel} from '../Utils/Scale';
+import {widthPixel} from '../Utils/Scale';
 
 interface Props {
   pageCount: number;
@@ -32,7 +32,7 @@ const Paginator = ({
         .map((_, i) => {
           const dotWidth = scrollX.interpolate({
             inputRange: [(i - 1) * width, i * width, (i + 1) * width],
-            outputRange: [10, 20, 10],
+            outputRange: [widthPixel(10), widthPixel(20), widthPixel(10)],
             extrapolate: 'clamp',
           });
 
@@ -58,14 +58,14 @@ const Paginator = ({
 
 const styles = StyleSheet.create({
   container: {
-    height: heightPixel(15),
+    height: widthPixel(15),
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
   },
   dot: {
-    height: heightPixel(10),
-    borderRadius: 5,
+    height: widthPixel(10),
+    borderRadius: widthPixel(5),
     marginHorizontal: 8,
   },
 });
